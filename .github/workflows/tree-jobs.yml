@@ -31,7 +31,6 @@ jobs:
           uses: actions/download-artifact@v8
           with:
             name: dragon-artifact
-            path: dragon.txt
 
         - name: Read file
           run: cat dragon.txt
@@ -42,8 +41,10 @@ jobs:
     needs: test_job_1
     runs-on: ubuntu-latest
     steps:
-        - name: Sleep for 30 seconds
-          run: sleep 30
+        - name: Download dragon.txt as artifact
+          uses: actions/download-artifact@v8
+          with:
+            name: dragon-artifact
 
         - name: Read file
           run: cat dragon.txt
