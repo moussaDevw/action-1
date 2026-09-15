@@ -1,0 +1,13 @@
+name: Manual-workflow
+
+on: workflow_dispatch
+
+jobs:
+  manual_job_1:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repos
+          uses: actions/checkout@v7
+
+        - name: List files
+          run: ls -ltra
