@@ -11,3 +11,17 @@ jobs:
 
         - name: List files
           run: ls -ltra
+  deploy_job_1:
+    needs: manual_job_1
+    concurrency:
+        group: deploy_job_1
+        cancel-in-progress: true
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repos
+          uses: actions/checkout@v7
+
+        - name: List files
+          run: ls -ltra
+        - name: Sleep for 1000 seconds
+          run: sleep 1000
